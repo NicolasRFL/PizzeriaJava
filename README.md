@@ -22,3 +22,6 @@ Diagrama de clases:
 
 ![pizzeria](https://user-images.githubusercontent.com/19522803/110900941-4d895e00-82e2-11eb-87f0-21d616f31b28.png)
 
+
+![pizzeria](https://user-images.githubusercontent.com/19522803/110903288-f8e7e200-82e5-11eb-93d4-9b1bca176c47.png)
+
