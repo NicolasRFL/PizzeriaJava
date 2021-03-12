@@ -31,17 +31,17 @@ public class Ticket {
         this.totalGastado =t;
     }
 
-    public void agregarToppings(String nombre,Double valor){
-        SimpleEntry<String,Double> top=new SimpleEntry<>(nombre,valor);
+    public void agregarToppings(NOMBREPRODUCTO producto,Double valor){
+        SimpleEntry<String,Double> top=new SimpleEntry<>(producto.getNombre(), valor);
         this.toppings.add(top);
     }
 
-    public void agregarPizza(String p,Double v){
-        this.pizza = new SimpleEntry<>(p,v);
+    public void agregarPizza(NOMBREPRODUCTO p,Double v){
+        this.pizza = new SimpleEntry<>(p.getNombre(),v);
     }
 
     public void crearArchivoTexto() throws IOException {
-        PrintWriter bw = new PrintWriter(this.nombreArchivo, "UTF-8");
+        BufferedWriter bw = new BufferedWriter(new FileWriter(this.nombreArchivo));
         bw.write(infoCondensada);
         bw.close();
     }
@@ -54,8 +54,8 @@ public class Ticket {
             this.toppings.remove(0);
         }
         if (this.calificoDescuento){
-            Double d=(1-this.descuento*100);
-            this.infoCondensada+="Califico para un descuento de: "+d.toString()+"% \n";
+            Double d=(100-this.descuento*100);
+            this.infoCondensada+="Califico para un descuento de: "+ d.toString() +"% \n";
         }
         this.infoCondensada+="Total gastado: "+"            $"+this.totalGastado.toString()+"\n";
         this.infoCondensada+="Ticket guardado en archivo: "+this.nombreArchivo;

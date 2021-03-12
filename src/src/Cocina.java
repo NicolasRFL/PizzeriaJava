@@ -13,13 +13,6 @@ public class Cocina {
         return new PizzaMuzzarela();
     }
 
-    public PizzaMuzzarela crearComboMuzza(){
-        PizzaMuzzarela p = new PizzaMuzzarela();
-        p.agregarTopping(new ToppingTomate());
-        p.agregarTopping(new ToppingHongos());
-        return p;
-    }
-
     public void agregarTopping(PizzaAbstracta p,Topping e){
         p.agregarTopping(e);
     }
@@ -37,4 +30,36 @@ public class Cocina {
     }
 
     public ToppingHongos crearToppingHongos(){return new ToppingHongos();}
+
+    public Topping crearTopping(NOMBREPRODUCTO n){
+        if (n==null){
+            throw new ToppingNoSeleccionadoException();
+        }
+        switch (n) {
+            case ANCHOAS:
+                return crearToppingAnchoas();
+            case TOMATE:
+                return crearToppingTomate();
+            case HONGOS:
+                return crearToppingHongos();
+            default:
+                throw new ToppingNoSeleccionadoException();
+        }
+    }
+
+    public PizzaAbstracta crearPizza(NOMBREPRODUCTO c){
+        if (c==null){
+            throw new PizzaNoSeleccionadaException();
+        }
+        switch (c){
+            case FUGAZZETA:
+                return crearPizzaFugazzeta();
+            case MUZZARELA:
+                return crearPizzaMuzzarela();
+            case NAPOLITANA:
+                return crearPizzaNapolitana();
+            default:
+                throw new PizzaNoSeleccionadaException();
+        }
+    }
 }

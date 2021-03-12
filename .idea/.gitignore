@@ -4,5 +4,6 @@
 # Datasource local storage ignored files
 /../../../../../../:\Users\Nicolas\IdeaProjects\Pizzeria\.idea/dataSources/
 /dataSources.local.xml
+/ticket.txt
 # Editor-based HTTP Client requests
 /httpRequests/

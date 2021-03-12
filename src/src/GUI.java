@@ -28,6 +28,7 @@ public class GUI {
 
     public GUI(Pizzeria p) {
         this.pizzeria = p;
+        p.setearInterfazGrafica(this);
         this.toppingsCheckBoxes = new ArrayList<>();
         this.pizzasBotones = new ArrayList<>();
 
@@ -147,8 +148,9 @@ public class GUI {
         toppingsContainer.add(tomate);
     }
 
-    private void crearTodo() {
-        this.pizzeria.cobrarPizza(this, this.toppingsCheckBoxes, this.nombreCliente);
+    private void notificarCambioPizzeria() {
+        this.pizzeria.recibirNotificacion();
+        borrarSeleccion();
     }
 
     private void crearBotonTerminar() {
@@ -166,7 +168,7 @@ public class GUI {
         JOptionPane.showMessageDialog(this.f, nombreVentana, msg, JOptionPane.WARNING_MESSAGE);
     }
 
-    public void mostrarInfo(String s) {
+    public void actualizarVista(String s) {
         this.output.setText(s);
     }
 
@@ -205,8 +207,12 @@ public class GUI {
             crearVentanaAdvertencia("Nombre vacio", "Asignele un nombre al cliente");
         else {
             this.nombreCliente = n.getText();
-            crearTodo();
+            notificarCambioPizzeria();
         }
+    }
+
+    public String obtenerNombreCliente(){
+        return this.nombreCliente;
     }
 
     public static void main(String[] args) {
